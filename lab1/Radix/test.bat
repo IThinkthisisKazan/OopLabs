@@ -6,7 +6,7 @@ Debug\Radix.exe 1 12 111
 if NOT ERRORLEVEL 1 goto err
 echo Test 2 passed!
 
-Debug\Radix.exe 4 33 111
+Debug\Radix.exe 4 37 111
 if NOT ERRORLEVEL 1 goto err
 echo Test 3 passed!
 
@@ -48,6 +48,13 @@ set /p VAR=<temp.txt
 if NOT %VAR% == -512 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 10 passed!
+
+
+Debug\Radix.exe 10 34 610072875 > temp.txt
+set /p VAR=<temp.txt
+if NOT %VAR% == DEHUNT goto err
+IF NOT ERRORLEVEL 0 goto err
+echo Test 11 passed!
 
 echo OK
 goto noerr
