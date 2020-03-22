@@ -12,7 +12,7 @@ struct Arguments
 	string value;
 };
 
-optional<Arguments> ParseArgss(int argc, char* argv[])
+optional<Arguments> ParseArgs(int argc, char* argv[])
 {
 	if (argc != 4)
 	{
@@ -158,7 +158,6 @@ string IntToString(int n, int radix) {
 	} while (n != 0);
 
 	result = negativeSwitch + result;
-
 	return result;
 }
 
@@ -206,12 +205,15 @@ bool ConvertValue(int source, int destination, const string value)
 	if (CheckArgs(source, destination, value, wasError))
 	{
 		int number = StringToInt(value, source, wasError);
+
 		if (wasError)
 		{
 			return false;
 		}
+
 		string result = IntToString(number, destination);
 		cout << result << endl;
+
 		return true;
 	}
 	return false;
@@ -219,14 +221,14 @@ bool ConvertValue(int source, int destination, const string value)
 
 int main(int argc, char* argv[])
 {
-	auto args = ParseArgss(argc, argv);
-
+	auto args = ParseArgs(argc, argv);
 	if (!args)
 	{
 		return 1;
 	}
 
 	string result;
+
 	if (!ConvertValue(args->source, args->destination, args->value))
 	{
 		return 1;
