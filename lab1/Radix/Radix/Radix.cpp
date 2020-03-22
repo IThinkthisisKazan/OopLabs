@@ -130,7 +130,7 @@ int StringToInt(const string str, int radix, bool& wasError)
 			wasError = true;
 			cout << "Overflow error" << endl;
 		}
-		i = i + 1;
+		i++;
 	}
 	return n;
 }
