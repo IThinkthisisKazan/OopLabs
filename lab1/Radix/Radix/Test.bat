@@ -1,91 +1,101 @@
 SET Program="%~1"
 
-::Not enough arguments
+::нехватка аргументов
 %Program%
 if NOT ERRORLEVEL 1 goto err
 echo Test 1 passed!
 
-::Notation less then 2
+::система счисления меньше 2
 %Program% 1 12 111
 if NOT ERRORLEVEL 1 goto err
 echo Test 2 passed!
 
-::Notation greater then 36
+::система счисления больше 36
 %Program% 4 37 111
 if NOT ERRORLEVEL 1 goto err
 echo Test 3 passed!
 
-::Too many arguments
+::слишком много аргументов
 %Program% 10 12 ABB ABC CBA
 if NOT ERRORLEVEL 1 goto err
 echo Test 4 passed!
 
-::3rd argument symbol out of notation range
+::символы 3 аргумента выходят за границы системы счисления
 %Program% 10 12 ABCD
 if NOT ERRORLEVEL 1 goto err
 echo Test 5 passed!
 
-::3rd argument overflow
+::overflow 3 аргумента
 %Program% 10 16 99999999999999999999999999999
 IF NOT ERRORLEVEL 1 goto err
 echo Test 6 passed!
 
-::INT_MIN check
+::проверка INT_MIN
 %Program% 16 10 -80000000 > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == -2147483648 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 7 passed!
 
-::INT_MAX check
+::проверка INT_MAX
 %Program% 16 10 7FFFFFFF > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == 2147483647 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 8 passed!
 
-::1st or 2nd argument overflow
+::overflow 1 или 2 аргумента
 %Program% 10000000000000000000000 16 99
 IF NOT ERRORLEVEL 1 goto err
 echo Test 9 passed!
 
-::Normal work
+::проверка нормальной работы
 %Program% 10 16 1298 > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == 512 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 11 passed!
 
-::0 check
+::проверка 0
 %Program% 10 16 0 > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == 0 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 12 passed!
 
-::negative check
+::проверка отрицательного значения
 %Program% 10 16 -1298 > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == -512 goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 13 passed!
 
-::normal work
+::проверка нормальной работы
 %Program% 10 34 610072875 > temp.txt
 set /p VAR=<temp.txt
 if NOT %VAR% == DEHUNT goto err
 IF NOT ERRORLEVEL 0 goto err
 echo Test 14 passed!
 
-::lower letter check
+::проверка символов нижнего регистра
 %Program% 12 10 111a
 if NOT ERRORLEVEL 1 goto err
 echo Test 15 passed!
 
-::wrong symbols check
+::проверка лишних символов
 %Program% 12 10 111*1
 if NOT ERRORLEVEL 1 goto err
 echo Test 16 passed!
+
+::пустая строка в 1 или 2 аргументе
+%Program% 12 "" 111*1
+if NOT ERRORLEVEL 1 goto err
+echo Test 17 passed!
+
+::пустая строка в значении
+%Program% 12 10 """
+if NOT ERRORLEVEL 1 goto err
+echo Test 18 passed!
 
 echo OK
 goto noerr

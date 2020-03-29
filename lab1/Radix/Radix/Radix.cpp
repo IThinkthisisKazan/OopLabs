@@ -99,33 +99,74 @@ bool SafeAdd(int a, int b, int& result)
 	return false;
 }
 
-int StringToInt(const string str, int radix, bool& wasError)
+bool CheckRadix(int number, int radix) {
+	if (number >= 0 && number <= radix)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+int extractDigit(char symbol, int radix, bool& wasError)
+{
+	int number;
+	if (symbol >= '0' && symbol <= '9')
+	{
+		number = symbol - '0';
+		if (CheckRadix(number, radix)) {
+			return number;
+		}
+		wasError = true;
+		return 0;
+	}
+	else
+	{
+		if (symbol >= 'A' && symbol <= 'Z') 
+		{
+			number = symbol - 'A' + 10;
+			if (CheckRadix(number, radix)) {
+				return number;
+			}
+			wasError = true;
+			return 0;
+		}
+		else {
+			wasError = true;
+			cout << "Incorrect symbol in 3rd argument" << endl;
+			return 0;
+		}
+	}
+}
+
+int StringToInt(const string& str, int radix, bool& wasError)
 {
 	const int maxRadix = ('Z' - 'A') + 11;
 	size_t i = 0;
-	int number = 0;
+	int digit = 0;
 	int n = 0;
-	bool negativeSwitch = false;
+	bool isNegative = false;
+	if (str.length() == 0) {
+		wasError = true;
+		cout << "Value cannot be empty" << endl;
+		return 0;
+	}
 	if (str[0] == '-')
 	{
-		negativeSwitch = true;
+		isNegative = true;
+		isNegative = true;
 		i = 1;
 	}
 	while (i <= str.length() - 1 && !wasError)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
+		digit = extractDigit(str[i], radix, wasError);
+		if (isNegative)
 		{
-			number = str[i] - '0';
+			digit = -digit;
 		}
-		else
-		{
-			number = str[i] - 'A' + 10;
-		}
-		if (negativeSwitch)
-		{
-			number = -number;
-		}
-		if (!SafeMult(n, radix, n) || !SafeAdd(n, number, n))
+		if (!SafeMult(n, radix, n) || !SafeAdd(n, digit, n))
 		{
 			wasError = true;
 			cout << "Overflow error" << endl;
@@ -135,29 +176,34 @@ int StringToInt(const string str, int radix, bool& wasError)
 	return n;
 }
 
+char extractChar(int value) {
+	if (value > 9)
+	{
+		return (char)(value + 'A' - 10);
+	}
+	else
+	{
+		return (char)(value + '0');
+	}
+}
+
 string IntToString(int n, int radix) {
 	string result = "";
-	string negativeSwitch = "";
+	string isNegative = "";
 	int absN = 0;
 	if (n < 0)
 	{
-		negativeSwitch = "-";
+		isNegative = "-";
 	}
 	do
 	{
 		absN = abs(n % radix);
-		if (absN > 9)
-		{
-			result = (char)(absN + 'A' - 10) + result;
-		}
-		else
-		{
-			result = (char)(absN + '0') + result;
-		}
+		result = extractChar(absN) + result;
 		n = n / radix;
-	} while (n != 0);
+	} 
+	while (n != 0);
 
-	result = negativeSwitch + result;
+	result = isNegative + result;
 	return result;
 }
 
@@ -170,39 +216,11 @@ int CheckNotation(int radix)
 	return true;
 }
 
-bool CheckArgs(int source, int destination, const string value, bool& wasError)
-{
-	if (CheckNotation(source) && CheckNotation(destination))
-	{
-		string alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		int negativeSwitch = 0;
-		if (value[0] == '-')
-		{
-			negativeSwitch = 1;
-		}
-		if (value.substr(negativeSwitch, value.size()).find_first_not_of(alphabet.substr(0, source)) == string::npos)
-		{
-			return true;
-		}
-		else
-		{
-			cout << "error in 3rd argument" << endl;
-			wasError = true;
-			return false;
-		}
-	}
-	else
-	{
-		cout << "Notation out of range" << endl;
-		wasError = true;
-		return false;
-	}
-}
 
-bool ConvertValue(int source, int destination, const string value)
+bool ConvertValue(int source, int destination, const string& value)
 {
 	bool wasError = false;
-	if (CheckArgs(source, destination, value, wasError))
+	if (CheckNotation(source) && CheckNotation(destination))
 	{
 		int number = StringToInt(value, source, wasError);
 
@@ -216,12 +234,14 @@ bool ConvertValue(int source, int destination, const string value)
 
 		return true;
 	}
+	cout << "Error in 1st or 2nd argument" << endl;
 	return false;
 }
 
 int main(int argc, char* argv[])
 {
 	auto args = ParseArgs(argc, argv);
+
 	if (!args)
 	{
 		return 1;
@@ -233,5 +253,6 @@ int main(int argc, char* argv[])
 	{
 		return 1;
 	}
+
 	return 0;
 }
