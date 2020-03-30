@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
-//#include <vector>
 #include <sstream>
 
 const int MATRIX_SIZE = 3;
