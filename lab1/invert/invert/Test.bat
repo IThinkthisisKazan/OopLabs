@@ -1,5 +1,3 @@
-@echo off
-
 set PROGRAM="%~1"
 
 ::Empty file

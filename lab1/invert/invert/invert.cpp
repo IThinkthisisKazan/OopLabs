@@ -5,15 +5,18 @@
 
 const int MATRIX_SIZE = 3;
 
-void Transpose(double matrix[MATRIX_SIZE][MATRIX_SIZE]) {
+void Transpose(double matrix[MATRIX_SIZE][MATRIX_SIZE]) 
+{
 	double temp;
 	for (int i = 0; i < MATRIX_SIZE; i++)
+	{
 		for (int j = i; j < MATRIX_SIZE; j++)
 		{
 			temp = matrix[i][j];
 			matrix[i][j] = matrix[j][i];
 			matrix[j][i] = temp;
 		}
+	}
 }
 
 double FindDeterminant(const double matrix[MATRIX_SIZE][MATRIX_SIZE])
@@ -62,14 +65,14 @@ bool ReadMatrixFromFile(const std::string& inputFileName, double matrix[MATRIX_S
 		while (ss >> number)
 		{
 			matrix[i][j] = number;
-			j = j + 1;
+			j++;
 		}
 		if (j != MATRIX_SIZE)
 		{
 			std::cout << "Incorrect matrix!\n";
 			return false;
 		}
-		i = i + 1;
+		i++;
 	}
 	if (i != MATRIX_SIZE)
 	{
@@ -82,6 +85,7 @@ bool ReadMatrixFromFile(const std::string& inputFileName, double matrix[MATRIX_S
 bool InvertMatrix(double matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
 	double determinant = FindDeterminant(matrix);
+
 	if (determinant == 0)
 	{
 		std::cout << "Matrix with determinant equaling 0 cannot be inversed \n";
@@ -92,9 +96,9 @@ bool InvertMatrix(double matrix[MATRIX_SIZE][MATRIX_SIZE])
 	double additionMatrix[MATRIX_SIZE][MATRIX_SIZE];
 	FindAdditions(matrix, additionMatrix,  1 / determinant);
 
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; i++)
 	{
-		for (int j = 0; j < 3; ++j) 
+		for (int j = 0; j < 3; j++) 
 		{
 			if (additionMatrix[i][j] == -0) 
 			{
@@ -111,6 +115,7 @@ void PrintMatrix(const double matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
 	std::cout.precision(3);
 	std::cout.setf(std::ios::fixed);
+
 	for (int i = 0; i < MATRIX_SIZE; i++)
 	{
 		for (int j = 0; j < MATRIX_SIZE; j++)
