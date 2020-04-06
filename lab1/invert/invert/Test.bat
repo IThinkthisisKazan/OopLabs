@@ -30,6 +30,9 @@ echo Test 6 passed
 %PROGRAM% matrix4.txt "%TEMP%\output.txt" > nul && goto err
 echo Test 7 passed
 
+%PROGRAM% input5.txt > nul && goto err
+echo Test 8 passed
+
 echo tests passed
 exit /B 0
 
