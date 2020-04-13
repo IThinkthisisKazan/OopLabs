@@ -110,8 +110,9 @@ bool CheckRadix(int number, int radix) {
 	}
 }
 
-int extractDigit(char symbol, int radix, bool& wasError)
+int ExtractDigit(char symbol, int radix, bool& wasError)
 {
+	wasError = false;
 	int number;
 	if (symbol >= '0' && symbol <= '9')
 	{
@@ -143,25 +144,23 @@ int extractDigit(char symbol, int radix, bool& wasError)
 
 int StringToInt(const string& str, int radix, bool& wasError)
 {
-	const int maxRadix = ('Z' - 'A') + 11;
-	size_t i = 0;
-	int digit = 0;
-	int n = 0;
-	bool isNegative = false;
+	wasError = false;
 	if (str.length() == 0) {
 		wasError = true;
-		cout << "Value cannot be empty" << endl;
 		return 0;
 	}
+	bool isNegative = false;
+	size_t i = 0;
 	if (str[0] == '-')
 	{
 		isNegative = true;
-		isNegative = true;
 		i = 1;
 	}
+	int digit = 0;
+	int n = 0;
 	while (i <= str.length() - 1 && !wasError)
 	{
-		digit = extractDigit(str[i], radix, wasError);
+		digit = ExtractDigit(str[i], radix, wasError);
 		if (isNegative)
 		{
 			digit = -digit;
@@ -169,14 +168,14 @@ int StringToInt(const string& str, int radix, bool& wasError)
 		if (!SafeMult(n, radix, n) || !SafeAdd(n, digit, n))
 		{
 			wasError = true;
-			cout << "Overflow error" << endl;
 		}
 		i++;
 	}
 	return n;
 }
 
-char extractChar(int value) {
+char extractChar(int value) 
+{
 	if (value > 9)
 	{
 		return (char)(value + 'A' - 10);
@@ -187,14 +186,15 @@ char extractChar(int value) {
 	}
 }
 
-string IntToString(int n, int radix) {
-	string result = "";
-	string isNegative = "";
+string IntToString(int n, int radix) 
+{
+	string isNegative;
 	int absN = 0;
 	if (n < 0)
 	{
 		isNegative = "-";
 	}
+	string result;
 	do
 	{
 		absN = abs(n % radix);
@@ -217,7 +217,7 @@ int CheckNotation(int radix)
 }
 
 
-bool ConvertValue(int source, int destination, const string& value)
+bool ConvertValue(int source, int destination, const string& value, string& result)
 {
 	bool wasError = false;
 	if (CheckNotation(source) && CheckNotation(destination))
@@ -226,12 +226,10 @@ bool ConvertValue(int source, int destination, const string& value)
 
 		if (wasError)
 		{
+			cout << "Error in 3rd argument" << endl;
 			return false;
 		}
-
-		string result = IntToString(number, destination);
-		cout << result << endl;
-
+		result = IntToString(number, destination);
 		return true;
 	}
 	cout << "Error in 1st or 2nd argument" << endl;
@@ -249,10 +247,11 @@ int main(int argc, char* argv[])
 
 	string result;
 
-	if (!ConvertValue(args->source, args->destination, args->value))
+	if (!ConvertValue(args->source, args->destination, args->value, result))
 	{
 		return 1;
 	}
 
+	cout << result << endl;
 	return 0;
 }
