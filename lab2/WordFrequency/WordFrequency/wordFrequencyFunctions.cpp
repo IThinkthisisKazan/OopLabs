@@ -5,19 +5,6 @@
 
 using namespace std;
 
-char MyToLower(char& ch)
-{
-	if (ch > 'A' && ch < 'Z')
-	{
-		return ch + 'z' - 'Z';
-	}
-	if (ch > 'À' && ch < 'ß')
-	{
-		return CharLower(ch);
-	}
-	return ch;
-}
-
 Frequency CalcFrequency(std::istream& input)
 {
 	Frequency frequency;
@@ -29,8 +16,9 @@ Frequency CalcFrequency(std::istream& input)
 		{
 			for_each(word.begin(), word.end(), [](char& ch) 
 			{
-				ch = MyToLower(ch);
+				ch = tolower(ch);
 			});
+
 			frequency[word]++;
 		}
 	}
