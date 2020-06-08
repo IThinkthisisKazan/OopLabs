@@ -20,7 +20,7 @@ TEST_CASE("CalcFrequency should return the frequency of occurrence of words")
 	CHECK(expected == frequency);
 }
 
-TEST_CASE("CaclFrequency should return empty frequency if no words were in input")
+TEST_CASE("CalcFrequency should return empty frequency if no words were in input")
 {
 	istringstream input(" \t \n \t \n ");
 	Frequency expected;

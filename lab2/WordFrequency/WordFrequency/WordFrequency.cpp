@@ -3,8 +3,6 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "");
-	std::cout.imbue(std::locale());
 	Frequency frequency = CalcFrequency(cin);
 
 	if (frequency.empty())
@@ -13,7 +11,7 @@ int main()
 		return 0;
 	}
 
-	for (auto el : frequency)
+	for (auto & el : frequency)
 	{
 		cout << el.first << " -> " << el.second << endl;
 	}
