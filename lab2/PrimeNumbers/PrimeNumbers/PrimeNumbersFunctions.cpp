@@ -19,7 +19,7 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 set<int> GeneratePrimeSet(const vector<bool>& numbers)
 {
 	set<int> selectedNumbers;
-	for (auto i = 2; i < numbers.size(); i++)
+	for (size_t i = 2; i < numbers.size(); i++)
 	{
 		if (numbers[i])
 		{

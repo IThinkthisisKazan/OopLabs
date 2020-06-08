@@ -5,9 +5,9 @@ using namespace std;
 
 const int MAX_NUMBER = 100000000;
 
-void PrintSet(set<int> primeNumbers)
+void PrintSet(const set<int>& primeNumbers)
 {
-	for (auto it = primeNumbers.begin(); it != primeNumbers.end(); ++it)
+	for (auto it = primeNumbers.begin(); it != primeNumbers.end(); it++)
 	{
 		cout << ' ' << *it;
 	}
