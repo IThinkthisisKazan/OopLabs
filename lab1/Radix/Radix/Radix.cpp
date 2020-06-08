@@ -156,11 +156,10 @@ int StringToInt(const string& str, int radix, bool& wasError)
 		isNegative = true;
 		i = 1;
 	}
-	int digit = 0;
 	int n = 0;
 	while (i <= str.length() - 1 && !wasError)
 	{
-		digit = ExtractDigit(str[i], radix, wasError);
+		int digit = ExtractDigit(str[i], radix, wasError);
 		if (isNegative)
 		{
 			digit = -digit;
@@ -174,7 +173,7 @@ int StringToInt(const string& str, int radix, bool& wasError)
 	return n;
 }
 
-char extractChar(int value) 
+char ExtractChar(int value) 
 {
 	if (value > 9)
 	{
@@ -189,7 +188,6 @@ char extractChar(int value)
 string IntToString(int n, int radix) 
 {
 	string isNegative;
-	int absN = 0;
 	if (n < 0)
 	{
 		isNegative = "-";
@@ -197,8 +195,8 @@ string IntToString(int n, int radix)
 	string result;
 	do
 	{
-		absN = abs(n % radix);
-		result = extractChar(absN) + result;
+		int absN = abs(n % radix);
+		result = ExtractChar(absN) + result;
 		n = n / radix;
 	} 
 	while (n != 0);
@@ -226,13 +224,11 @@ bool ConvertValue(int source, int destination, const string& value, string& resu
 
 		if (wasError)
 		{
-			cout << "Error in 3rd argument" << endl;
 			return false;
 		}
 		result = IntToString(number, destination);
 		return true;
 	}
-	cout << "Error in 1st or 2nd argument" << endl;
 	return false;
 }
 
@@ -249,6 +245,7 @@ int main(int argc, char* argv[])
 
 	if (!ConvertValue(args->source, args->destination, args->value, result))
 	{
+		cout << "Error. Check your arguments";
 		return 1;
 	}
 
