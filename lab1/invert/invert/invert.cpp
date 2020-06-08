@@ -33,7 +33,7 @@ double FindDeterminant(const Matrix3x3& matrix)
 	return determinant;
 }
 
-void FindAdditions(const Matrix3x3 matrix, Matrix3x3& adjugateMatrix)
+void FindAdditions(const Matrix3x3& matrix, Matrix3x3& adjugateMatrix)
 {
 	adjugateMatrix[0][0] = (matrix[1][1] * matrix[2][2] - matrix[2][1] * matrix[1][2]);
 	adjugateMatrix[0][1] = ((-1) * (matrix[1][0] * matrix[2][2] - matrix[2][0] * matrix[1][2]));
@@ -149,7 +149,8 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	if (!InvertMatrix(matrix)) {
+	if (!InvertMatrix(matrix)) 
+	{
 		std::cout << "Matrix cannot be inverted";
 		return 1;
 	}
