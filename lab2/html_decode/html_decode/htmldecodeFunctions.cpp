@@ -13,39 +13,39 @@ const vector<pair<string, string>> HTML_ENTITIES = { {
                                                         {"&", "&amp;"}
 													} };
 
-string ReplaceEntity(string& htmlCode, const string& charRepresentation, const string& htmlEntity)
+string FindAndReplace(string& source, const string& searchString, const string& replacementString)
 {
     string result = "";
-    if (htmlCode.empty())
+    if (source.empty())
     {
         return result;
     }
     size_t pos = 0;
-    size_t entityPos = 0;
-    while (entityPos != string::npos)
+    size_t replacementPos = 0;
+    while (replacementPos != string::npos)
     {
-        entityPos = htmlCode.find(htmlEntity, pos);
-        if (entityPos != string::npos)
+        replacementPos = source.find(replacementString, pos);
+        if (replacementPos != string::npos)
         {
-            result.append(htmlCode, pos, entityPos - pos);
-            pos = entityPos + htmlEntity.size();
-            result.append(charRepresentation);
+            result.append(source, pos, replacementPos - pos);
+            pos = replacementPos + replacementString.size();
+            result.append(searchString);
         }
         else
         {
-        result.append(htmlCode, pos, htmlCode.size());
+        result.append(source, pos, source.size());
             break;
         } 
     }
     return result;
 }
 
-string HtmlDecode(string& htmlCode)
+string HtmlDecode(const string& htmlCode)
 {
     string decoded = htmlCode;
-    for (auto entity : HTML_ENTITIES)
+    for (auto & entity : HTML_ENTITIES)
     {
-        decoded = ReplaceEntity(decoded, entity.first, entity.second);
+        decoded = FindAndReplace(decoded, entity.first, entity.second);
     }
     return decoded;
 }

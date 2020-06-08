@@ -6,5 +6,5 @@
 
 using namespace std;
 
-std::string ReplaceEntity(std::string& htmlCode, const std::string& charRepresentation, const std::string& htmlEntity);
-std::string HtmlDecode(std::string& htmlCode);
+std::string FindAndReplace(std::string& htmlCode, const std::string& charRepresentation, const std::string& htmlEntity);
+std::string HtmlDecode(const std::string& htmlCode);
