@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include "CTVSet.h"
+﻿#include "CTVSet.h"
 #include "CommandHandler.h"
 
 using namespace std;
@@ -7,5 +6,6 @@ using namespace std;
 int main()
 {
     CTVSet tv;
-    HandleTvCommands(cin, cout, tv);
+    TVController(tv, cin, cout);
+	return 0;
 }

@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{2B3492B3-EDF0-40AC-9CE1-5DBCE62B0721}</ProjectGuid>
+    <ProjectGuid>{AB0F7759-845E-4F19-AB3A-C020661A6BBC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TVSet</RootNamespace>
+    <RootNamespace>TVSetTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,25 +147,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CommandHandler.cpp" />
-    <ClCompile Include="CTVSet.cpp" />
-    <ClCompile Include="TVSet.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CommandHandler.h" />
-    <ClInclude Include="CTVSet.h" />
+    <ClCompile Include="..\TVSet\TVSet\CTVSet.cpp" />
+    <ClCompile Include="TVSet_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\TVSet\TVSet\CTVSet.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\boost.1.72.0.0\build\boost.targets" Condition="Exists('..\packages\boost.1.72.0.0\build\boost.targets')" />
+    <Import Project="..\TVSet\packages\boost.1.72.0.0\build\boost.targets" Condition="Exists('..\TVSet\packages\boost.1.72.0.0\build\boost.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\boost.1.72.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.72.0.0\build\boost.targets'))" />
+    <Error Condition="!Exists('..\TVSet\packages\boost.1.72.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\TVSet\packages\boost.1.72.0.0\build\boost.targets'))" />
   </Target>
 </Project>
