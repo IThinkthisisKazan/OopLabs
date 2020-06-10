@@ -49,6 +49,8 @@ TEST_CASE("select channel that is out of range")
 	tv.SelectChannel(5);
 	tv.SelectChannel(100);
 	REQUIRE(tv.GetChannel() == 5);
+	tv.SelectChannel(0);
+	REQUIRE(tv.GetChannel() == 5);
 }
 
 TEST_CASE("select channel that is within range")
