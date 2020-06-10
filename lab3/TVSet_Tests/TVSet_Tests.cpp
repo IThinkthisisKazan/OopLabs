@@ -51,6 +51,18 @@ TEST_CASE("select channel that is out of range")
 	REQUIRE(tv.GetChannel() == 5);
 }
 
+TEST_CASE("select channel that is within range")
+{
+	CTVSet tv;
+	tv.TurnOn();
+	tv.SelectChannel(5);
+	tv.SelectChannel(99);
+	REQUIRE(tv.GetChannel() == 99);
+	tv.SelectChannel(5);
+	tv.SelectChannel(1);
+	REQUIRE(tv.GetChannel() == 1);
+}
+
 TEST_CASE("Select previous channel should cycle between 2  last channels")
 {
 	CTVSet tv;
