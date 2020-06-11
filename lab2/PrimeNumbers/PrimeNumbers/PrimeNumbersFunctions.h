@@ -3,10 +3,8 @@
 #include <vector>
 #include <set>
 
-using namespace std;
+std::set<int> GeneratePrimeNumbersSet(int upperBound);
 
-set<int> GeneratePrimeNumbersSet(int upperBound);
+std::set<int> GeneratePrimeSet(const vector<bool>& numbers);
 
-set<int> GeneratePrimeSet(const vector<bool>& numbers);
-
-vector<bool> SelectPrimeNumbers(int upperBound);
+std::vector<bool> SelectPrimeNumbers(int upperBound);
