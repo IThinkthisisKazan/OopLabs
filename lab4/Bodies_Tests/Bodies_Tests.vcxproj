@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{41A03CD5-10D1-4C6C-9FFD-23BEAB0CF5C7}</ProjectGuid>
+    <ProjectGuid>{BCBA5F69-13AF-4A7B-B09A-2F810653A11E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BodiesTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -147,21 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Shapes\Shapes\CBody.cpp" />
-    <ClCompile Include="..\Shapes\Shapes\CCone.cpp" />
-    <ClCompile Include="..\Shapes\Shapes\CCylinder.cpp" />
-    <ClCompile Include="..\Shapes\Shapes\CParallelepiped.cpp" />
-    <ClCompile Include="..\Shapes\Shapes\CSphere.cpp" />
-    <ClCompile Include="..\Shapes\Shapes\UserInterface.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\CBody.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\CCone.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\CCylinder.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\CParallelepiped.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\CSphere.cpp" />
+    <ClCompile Include="..\Bodies\Bodies\UserInterface.cpp" />
     <ClCompile Include="Bodies_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Shapes\Shapes\CBody.h" />
-    <ClInclude Include="..\Shapes\Shapes\CCone.h" />
-    <ClInclude Include="..\Shapes\Shapes\CCylinder.h" />
-    <ClInclude Include="..\Shapes\Shapes\CParallelepiped.h" />
-    <ClInclude Include="..\Shapes\Shapes\CSphere.h" />
-    <ClInclude Include="..\Shapes\Shapes\UserInterface.h" />
+    <ClInclude Include="..\Bodies\Bodies\CBody.h" />
+    <ClInclude Include="..\Bodies\Bodies\CCone.h" />
+    <ClInclude Include="..\Bodies\Bodies\CCylinder.h" />
+    <ClInclude Include="..\Bodies\Bodies\CParallelepiped.h" />
+    <ClInclude Include="..\Bodies\Bodies\CSphere.h" />
+    <ClInclude Include="..\Bodies\Bodies\UserInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

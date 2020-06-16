@@ -1,4 +1,4 @@
-﻿#include "CBody.h"
+#include "CBody.h"
 
 CBody::CBody(string type, double density) {
 	CBody::density = density;

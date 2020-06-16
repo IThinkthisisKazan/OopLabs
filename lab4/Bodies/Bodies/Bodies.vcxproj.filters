@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bodies.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="CBody.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -24,13 +27,10 @@
     <ClCompile Include="CCylinder.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="CSphere.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="CParallelepiped.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="CSphere.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="UserInterface.cpp">
@@ -47,10 +47,10 @@
     <ClInclude Include="CCylinder.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="CSphere.h">
+    <ClInclude Include="CParallelepiped.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="CParallelepiped.h">
+    <ClInclude Include="CSphere.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="UserInterface.h">

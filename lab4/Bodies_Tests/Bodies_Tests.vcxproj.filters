@@ -18,42 +18,42 @@
     <ClCompile Include="Bodies_Tests.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\CBody.cpp">
+    <ClCompile Include="..\Bodies\Bodies\CBody.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\CCone.cpp">
+    <ClCompile Include="..\Bodies\Bodies\CCone.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\CCylinder.cpp">
+    <ClCompile Include="..\Bodies\Bodies\CCylinder.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\CParallelepiped.cpp">
+    <ClCompile Include="..\Bodies\Bodies\CParallelepiped.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\CSphere.cpp">
+    <ClCompile Include="..\Bodies\Bodies\CSphere.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shapes\Shapes\UserInterface.cpp">
+    <ClCompile Include="..\Bodies\Bodies\UserInterface.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Shapes\Shapes\CBody.h">
+    <ClInclude Include="..\Bodies\Bodies\CBody.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shapes\Shapes\CCone.h">
+    <ClInclude Include="..\Bodies\Bodies\CCone.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shapes\Shapes\CCylinder.h">
+    <ClInclude Include="..\Bodies\Bodies\CCylinder.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shapes\Shapes\CParallelepiped.h">
+    <ClInclude Include="..\Bodies\Bodies\CParallelepiped.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shapes\Shapes\CSphere.h">
+    <ClInclude Include="..\Bodies\Bodies\CSphere.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shapes\Shapes\UserInterface.h">
+    <ClInclude Include="..\Bodies\Bodies\UserInterface.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
