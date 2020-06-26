@@ -10,7 +10,6 @@ public:
 	double GetDepth() const;
 	double GetVolume() const override;
 private:
-	virtual void OtherParameters(ostream& output) const override;
 	double width;
 	double height;
 	double depth;
